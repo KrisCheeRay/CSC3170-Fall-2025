@@ -2,8 +2,8 @@
 
 ````markdown
 # 🧾 CSC3170 DBMS Project (2025 Fall)  
-**Author:** CAI Rui  
-**Student ID:** 123090007  
+**Author:**   
+**Student ID:**  
 **Course:** CSC3170 DBMS
 **Institution:** CUHKSZ
 
@@ -45,8 +45,8 @@ please unzip it first to any directory you prefer.
 For example:
 
 ```bash
-unzip CSC3170_VMS_123090007_CAI_Rui.zip
-cd CSC3170_VMS_123090007_CAI_Rui
+unzip CSC3170_VMS.zip
+cd CSC3170_VMS
 ```
 
 Now you should see folders like `server/`, `client/`, and files such as `env.yml` and `README.md`.
@@ -100,10 +100,10 @@ After successful login, users will be redirected automatically to their correspo
 ## 🗂️ Project Structure
 
 ```text
-CSC3170_VMS_123090007_CAI_Rui/
-├── CSC3170_Project_Report_CAI Rui_123090007.docx
-├── CSC3170_Project_Report_CAI Rui_123090007.pdf
-├── CSC3170_Project_Demo_CAI Rui.mp4
+CSC3170_VMS/
+├── CSC3170_Project_Report.docx
+├── CSC3170_Project_Report.pdf
+├── CSC3170_Demo.mp4
 ├── env.yml
 ├── Readme.md
 ├── requirements.txt
@@ -254,8 +254,8 @@ CSC3170_VMS_123090007_CAI_Rui/
 
 ## 👨‍💻 Author
 
-**Name:** CAI Rui
-**Student ID:** 123090007
+**Name:** 
+**Student ID:**
 **Institution:** CUHKSZ
 **Course:** CSC3170 DBMS (Fall 2025)
 
