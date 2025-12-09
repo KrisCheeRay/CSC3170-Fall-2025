@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8" /><title>Admin</title>
+<link rel="stylesheet" href="./style.css">
+<script defer src="./api.js"></script>
+<script defer src="./admin.js"></script>
+</head><body>
+<header>
+  <h1>Admin Webpage</h1>
+  <nav>
+    <button data-tab="list">Reservation List</button>
+    <button data-tab="report">Daily Report</button>
+    <button data-tab="profile">Profile</button>
+    <button onclick="logout()">Log Out</button>
+  </nav>
+</header>
+<main>
+<section id="tab-list" class="tab active">
+  <div>
+    <label>Date (Optional, Default TODAY) <input id="date" type="date"></label>
+    <label>Location (Optional)
+      <select id="locid">
+        <option value="">All</option>
+      </select>
+    </label>
+    <button onclick="loadAll()">Search</button>
+  </div>
+  <ul id="all-list"></ul>
+</section>
+
+<section id="tab-report" class="tab">
+  <div>
+    <label>Date <input id="rdate" type="date"></label>
+    <button onclick="loadReport()">Generate</button>
+  </div>
+
+  <div id="report-view" class="report-grid">
+    <div class="card">
+      <h3>Most Booked Location of the Day</h3>
+      <table class="kv">
+        <tbody>
+          <tr><th>Location</th><td id="mb-name">-</td></tr>
+          <tr><th>Total Reservations (pending+approved+denied)</th><td id="mb-total">-</td></tr>
+          <tr><th>Approved</th><td id="mb-approved">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+  <div class="card">
+    <h3>Most Visited Location of the Day (Approved Only)</h3>
+    <table class="kv">
+      <tbody>
+        <tr><th>Location</th><td id="mv-name">-</td></tr>
+        <tr><th>Approved</th><td id="mv-approved">-</td></tr>
+        <tr><th>Total Reservations (All Status)</th><td id="mv-total">-</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div class="card">
+      <h3>Daily Reservation Status</h3>
+      <table class="kv">
+        <tbody>
+          <tr><th>Total Reservations</th><td id="ds-total">-</td></tr>
+          <tr><th>Pending</th><td id="ds-pending">-</td></tr>
+          <tr><th>Approved</th><td id="ds-approved">-</td></tr>
+          <tr><th>Denied</th><td id="ds-denied">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Daily Unique Visitors</h3>
+      <table class="kv">
+        <tbody>
+          <tr><th>Total Visitors until today (including today)</th><td id="ds-uvdays">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <pre id="report-raw" class="hidden"></pre>
+</section>
+
+<section id="tab-profile" class="tab">
+  <div id="a-profile-view" class="card">
+    <h3>My Profile</h3>
+    <table class="kv">
+      <tbody>
+        <tr><th>Email:</th><td id="av-email">-</td></tr>
+        <tr><th>Phone Number:</th><td id="av-phone">-</td></tr>
+        <tr><th>Organization:</th><td id="av-org">-</td></tr>
+        <tr><th>Office Address:</th><td id="av-work">-</td></tr>
+        <tr><th>Display Name:</th><td id="av-dn">-</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:10px;">
+      <button id="btn-edit">Edit Profile</button>
+    </div>
+  </div>
+
+  <form id="a-profile" class="hidden">
+    <h3>Edit Profile</h3>
+    <label>Email<input id="ae" type="email" required></label>
+    <label>Phone Number (11 digits)<input id="ap" pattern="\d{11}"></label>
+    <label>Organization<input id="ao"></label>
+    <label>Office Address<input id="aw"></label>
+    <label>Display Name<input id="ad"></label>
+    <div style="margin-top:10px;">
+      <button type="submit">Save</button>
+      <button type="button" id="btn-cancel" class="secondary">Cancel</button>
+    </div>
+  </form>
+</section>
+</main>
+
+<style>
+  .hidden { display: none !important; }
+  .report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  table.kv { width: 100%; border-collapse: collapse; }
+  table.kv th, table.kv td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.kv th { width: 60%; font-weight: 600; color: #374151; }
+  table.kv td { color: #111827; }
+</style>
+</body></html>
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+<script defer src="./index.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Visitor Management System Login Webpage </title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./api.js"></script>
+  <script defer src="./index.js"></script>
+  <style>
+    header { text-align: center; margin-bottom: 20px; }
+    nav { text-align: center; margin-bottom: 12px; }
+    nav button { margin: 0 4px; padding: 6px 12px; }
+    form { max-width: 320px; margin: 12px auto; }
+    input, button { width: 100%; padding: 8px; margin: 6px 0; }
+    .tab { display: none; }
+    .tab.active { display: block; }
+    .msg { text-align: center; color: green; margin-top: 8px; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CUHK(SZ) Visitor Management System</h1>
+    <p>Visitor Reservation && Management Webpage</p>
+  </header>
+
+  <nav>
+    <button data-tab="visitor-login">Visitor Login</button>
+    <button data-tab="visitor-register">Visitor Sign in</button>
+    <button data-tab="visitor-reset">Visitor Password Reset</button>
+    <button data-tab="admin-login">Admin Login</button>
+  </nav>
+
+  <main>
+    <section id="tab-visitor-login" class="tab active">
+      <h2>Visitor Login</h2>
+      <form id="visitor-login-form">
+        <input id="v-identifier" placeholder="Email or Phone Number" required />
+        <input id="v-password" type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="tab-visitor-register" class="tab">
+      <h2>Visitor Registration</h2>
+      <form id="visitor-register-form">
+        <input id="r-name" placeholder="Name" required />
+        <input id="r-phone" placeholder="Phone Number (11 digits)" pattern="\d{11}" required />
+        <input id="r-email" type="email" placeholder="Email" required />
+        <input id="r-org" placeholder="Organization / Unit (Optional)" />
+        <input id="r-password" type="password" minlength="6" placeholder="Password (≥6 characters)" required />
+        <button type="submit">Register and Login</button>
+      </form>
+    </section>
+
+    <section id="tab-visitor-reset" class="tab">
+      <h2>Visitor Password Reset</h2>
+      <form id="visitor-reset-form">
+        <input id="reset-email" type="email" placeholder="Registered Email" required />
+        <input id="reset-phone" placeholder="Registered Phone Number (11 digits)" pattern="\d{11}" required />
+        <input id="reset-newpass" type="password" minlength="6" placeholder="New Password (≥6 characters)" required />
+        <button type="submit">Reset Password</button>
+      </form>
+      <p class="hint" style="text-align:center;">Please enter the email and phone number you registered with to reset your password</p>
+    </section>
+
+    <section id="tab-admin-login" class="tab">
+      <h2>Admin Login</h2>
+      <form id="admin-login-form">
+        <input id="a-username" placeholder="Admin Username" required />
+        <input id="a-password" type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <p id="msg" class="msg"></p>
+  </main>
+
+  <footer style="text-align:center;margin-top:24px;">
+    <small>© 2025 CUHK(SZ) Database Project - Visitor Management System - CAI Rui 123090007</small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+body { font-family: system-ui, sans-serif; margin: 24px; }
+nav button { margin-right: 8px; }
+.tab { display: none; margin-top: 16px; }
+.tab.active { display: none; }
+.tab.active { display: block; }
+form > * { display:block; margin:8px 0; }
+ul { list-style: none; padding: 0; }
+li { border: 1px solid #ddd; padding: 8px; margin: 8px 0; border-radius: 6px; }
+.hint { color: #666; font-size: 12px; }

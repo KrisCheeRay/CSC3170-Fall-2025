@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Root Webpage - Visitor Management System</title>
+
+  <style>
+    :root { --gap: 10px; }
+    * { box-sizing: border-box; }
+    body {
+      background: #fff;
+      color: #111;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 40px;
+    }
+    h1, h2, h3 { font-weight: 700; margin: 0 0 12px; }
+    .hidden { display: none; }
+    #msg { margin-top: 10px; min-height: 1.2em; }
+
+    input, select, button {
+      padding: 8px 10px;
+      margin: 6px 6px 6px 0;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #fff;
+      color: #111;
+    }
+    button { cursor: pointer; }
+    button:hover { background: #f6f6f6; }
+    button[disabled] { cursor: not-allowed; opacity: 0.5; }
+
+    .row { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; }
+    .section { margin-top: 20px; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    thead th { background: #fafafa; }
+
+    .actions { display: inline-flex; gap: 8px; }
+  </style>
+
+  <script defer src="./root.js"></script>
+</head>
+<body>
+
+  <div id="login-view">
+    <h1>Root Login</h1>
+    <p>Please enter your Root user credentials</p>
+    <div class="row">
+      <input id="root-username" placeholder="Username (root)" />
+      <input id="root-password" type="password" placeholder="Password" />
+      <button id="login-btn">Login</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+
+  <div id="portal-view" class="hidden">
+    <h1>Superadmin Portal</h1>
+    <p>Welcome, Root User</p>
+
+    <div class="row">
+      <button id="create-admin-btn">Create Admin</button>
+      <button id="show-location-management">Location Management</button>
+    </div>
+
+    <div id="create-section" class="hidden section">
+      <h2>Create Admin</h2>
+      <div class="row">
+        <input id="new-username" placeholder="Admin Username" />
+        <input id="new-password" type="password" placeholder="Password" />
+        <button id="confirm-create">Confirm</button>
+        <button id="cancel-create">Cancel</button>
+      </div>
+      <div id="create-msg"></div>
+    </div>
+
+    <div id="location-management" class="hidden section">
+      <h2>Location Management</h2>
+
+      <div class="row">
+        <button id="load-locations">Refresh Location List</button>
+        <button id="show-create-location">Create Location</button>
+      </div>
+      <table id="location-table" cellspacing="0" cellpadding="0" role="table" aria-label="Location List">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Campus</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody id="location-body">
+          <tr><td colspan="5">Haven't loaded locations yet</td></tr>
+        </tbody>
+      </table>
+
+      <div id="create-location-form" class="hidden section" aria-live="polite">
+        <h3>Create Location</h3>
+        <div class="row">
+          <label>Campus:
+            <select id="campus">
+              <option value="LOWER">LOWER</option>
+              <option value="MIDDLE">MIDDLE</option>
+              <option value="UPPER">UPPER</option>
+            </select>
+          </label>
+          <label>Location Name:
+            <input id="new-location-name" placeholder="Location Name" />
+          </label>
+          <button id="create-location-btn">Confirm</button>
+          <button id="cancel-create-location">Cancel</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <button id="cancel-location-management">Cancel Location Management</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <button id="logout-btn">Logout</button>
+    </div>
+  </div>
+
+</body>
+</html>

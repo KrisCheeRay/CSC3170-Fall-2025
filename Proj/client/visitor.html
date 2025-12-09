@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Visitor Webpage - Visitor Management System</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./api.js"></script>
+  <script defer src="./visitor.js"></script>
+</head>
+<body>
+<header>
+  <h1>Visitor Portal</h1>
+  <nav>
+    <button data-tab="new">Create Reservation</button>
+    <button data-tab="list">My Reservations</button>
+    <button data-tab="noti">Notification Center <span id="noti-badge" class="badge hidden">0</span></button>
+    <button data-tab="profile">My Profile</button>
+    <button id="logout-btn">Logout</button>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-new" class="tab">
+    <h2>Create Reservation</h2>
+    <form id="create-form">
+      <label>Campus
+        <select id="campus">
+          <option value="LOWER">LOWER</option>
+          <option value="MIDDLE">MIDDLE</option>
+          <option value="UPPER">UPPER</option>
+        </select>
+      </label>
+      <label>Location
+        <select id="location"></select>
+      </label>
+      <label>Start Time
+        <input id="start" type="datetime-local" required>
+      </label>
+      <label>End Time
+        <input id="end" type="datetime-local" required>
+      </label>
+      <label>Purpose
+        <input id="purpose" placeholder="Optional">
+      </label>
+      <details>
+        <summary>Driving Information (Optional)</summary>
+        <label><input id="drive" type="checkbox"> Driving?</label>
+        <label>License Plate
+          <input id="plate" pattern="[A-Z0-9]{6}" placeholder="e.g.,CUHKSZ (6 uppercase letters and numbers)">
+        </label>
+      </details>
+      <button type="submit">Submit Reservation</button>
+    </form>
+    <p class="hint">Note: Reservations must be made between 09:00 and 17:00 on the same day.</p>
+  </section>
+
+  <section id="tab-list" class="tab">
+    <h2>My Reservations</h2>
+    <div>
+      Status Filter:
+      <select id="filter-status">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="denied">Denied</option>
+      </select>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+    <ul id="resv-list"></ul>
+  </section>
+
+
+  <section id="edit-resv-form" class="tab">
+    <h2>Modify Reservation</h2>
+    <form id="edit-resv">
+      <input type="hidden" id="edit-id">
+      <label>Campus
+        <select id="edit-campus">
+          <option value="LOWER">LOWER</option>
+          <option value="MIDDLE">MIDDLE</option>
+          <option value="UPPER">UPPER</option>
+        </select>
+      </label>
+      <label>Location
+        <select id="edit-location"></select>
+      </label>
+      <label>Start Time
+        <input id="edit-start" type="datetime-local" required>
+      </label>
+      <label>End Time
+        <input id="edit-end" type="datetime-local" required>
+      </label>
+      <label>Purpose
+        <input id="edit-purpose" placeholder="Optional">
+      </label>
+      <details>
+        <summary>Driving Information (Optional)</summary>
+        <label><input id="edit-drive" type="checkbox"> Driving?</label>
+        <label>License Plate
+          <input id="edit-plate" pattern="[A-Z0-9]{6}" placeholder="e.g., CUHKSZ (6 uppercase letters and numbers)">
+        </label>
+      </details>
+      <button type="submit">Save Changes</button>
+      <button type="button" id="cancel-edit-resv">Cancel</button>
+      <p class="hint">Only <b>pending</b> status can be modified; the time must be within the 09:00–17:00 window on the same day.</p>
+    </form>
+  </section>
+
+  <section id="tab-noti" class="tab">
+    <h2>Notification Center</h2>
+    <div>
+      <label><input type="checkbox" id="noti-only-unread"> Only show unread</label>
+      <button id="mark-all-read">Mark all as read</button>
+      <button id="reload-noti">Refresh</button>
+    </div>
+    <ul id="noti-list"></ul>
+    <div>
+      <button id="prev-page">Previous Page</button>
+      <span id="page-info">Page 1</span>
+      <button id="next-page">Next Page</button>
+    </div>
+  </section>
+
+  <section id="tab-profile" class="tab">
+    <h2>My Profile</h2>
+    <div id="profile-view">
+      <p><b>Name:</b><span id="v-name"></span></p>
+      <p><b>Email:</b><span id="v-email"></span></p>
+      <p><b>Phone Number:</b><span id="v-phone"></span></p>
+      <p><b>Organization:</b><span id="v-org"></span></p>
+      <button id="edit-btn">Edit Profile</button>
+    </div>
+   
+    <form id="profile-form" style="display:none;">
+      <label>Name <input id="p-name" required></label>
+      <label>Email <input id="p-email" type="email" required></label>
+      <label>Phone Number <input id="p-phone" pattern="[0-9]{11}" required></label>
+      <label>Organization <input id="p-org"></label>
+      <label>New Password <input id="p-pass" type="password" minlength="6" placeholder="Leave blank to keep unchanged"></label>
+      <button type="submit">Save Changes</button>
+      <button type="button" id="cancel-profile">Cancel</button>
+    </form>
+  </section>
+</main>
+
+<style>
+  .hidden { display: none !important; }
+  .badge {
+    display: inline-block; min-width: 16px; padding: 0 6px;
+    border-radius: 10px; font-size: 12px; background: #d33; color: #fff;
+    text-align: center; vertical-align: middle;
+  }
+</style>
+</body>
+</html>

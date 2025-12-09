@@ -1,0 +1,3 @@
+JWT_SECRET = "dev-secret"
+JWT_ALGO = "HS256"
+JWT_EXPIRES_MIN = 60 * 24  
